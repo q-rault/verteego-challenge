@@ -18,7 +18,7 @@ defineProps({
   display: flex;
   flex-direction: column;
   place-items: center;
-  margin: 0 3rem;
+  /* margin: 0 3rem; */
   padding: 1rem 0;
 }
 </style>
