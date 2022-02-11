@@ -1,15 +1,21 @@
 <script setup>
-defineProps({
-  ip: {
-    type: String,
-    required: true,
-  },
+import { onMounted, reactive } from "vue";
+
+const state = reactive({ ipAddress: "loading" });
+
+function setIP() {
+  state.ipAddress = "test";
+}
+
+onMounted(() => {
+  setIP();
 });
 </script>
 
 <template>
   <div class="page-container">
     <h1>Verteego challenge</h1>
+    <p>This is your ip address : {{ state.ipAddress }}</p>
   </div>
 </template>
 
