@@ -1,16 +1,16 @@
 <script setup>
 import { onMounted, reactive } from "vue";
 
-const state = reactive({ ipAddress: "loading", ipType: "v4" });
+const state = reactive({ ipAddress: "loading", ipVersion: "v4" });
 
 function getAPIUrl() {
-  switch (state.ipType) {
+  switch (state.ipVersion) {
     case "v4":
       return "https://api.ipify.org?format=json";
     case "v6":
       return "https://api64.ipify.org?format=json";
     default:
-      console.log("error with selected IP type");
+      console.log("error with selected IP version");
   }
 }
 
