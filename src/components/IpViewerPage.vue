@@ -1,16 +1,24 @@
 <script setup>
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, computed } from "vue";
 
-const state = reactive({ ipAddress: "loading", ipVersion: "IPv4" });
+const state = reactive({ ipAddress: "loading", isIpV4: true });
+
+const ipV4 = "IPv4";
+const ipV6 = "Universal: IPv4/IPv6";
+
+const currentIpVersion = computed(() => {
+  return state.isIpV4 ? ipV4 : ipV6;
+});
+
+const nextIpVersion = computed(() => {
+  return !state.isIpV4 ? ipV4 : ipV6;
+});
 
 function getAPIUrl() {
-  switch (state.ipVersion) {
-    case "IPv4":
-      return "https://api.ipify.org?format=json";
-    case "Universal: IPv4/IPv6":
-      return "https://api64.ipify.org?format=json";
-    default:
-      console.log("error with selected IP version");
+  if (state.isIpV4) {
+    return "https://api.ipify.org?format=json";
+  } else {
+    return "https://api64.ipify.org?format=json";
   }
 }
 
@@ -24,6 +32,15 @@ function fetchIP() {
     .then((data) => setIP(data.ip));
 }
 
+function handleClick() {
+  toggleIpVersion();
+  fetchIP();
+}
+
+function toggleIpVersion() {
+  state.isIpV4 = !state.isIpV4;
+}
+
 onMounted(() => {
   fetchIP();
 });
@@ -33,7 +50,8 @@ onMounted(() => {
   <div class="page-container">
     <h1>Verteego challenge</h1>
     <p>This is your ip address :</p>
-    <p>{{ state.ipAddress }} ({{ state.ipVersion }})</p>
+    <p>{{ state.ipAddress }} ({{ currentIpVersion }})</p>
+    <button @click.prevent="handleClick">Switch to {{ nextIpVersion }}</button>
   </div>
 </template>
 
