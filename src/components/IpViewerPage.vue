@@ -1,13 +1,13 @@
 <script setup>
 import { onMounted, reactive } from "vue";
 
-const state = reactive({ ipAddress: "loading", ipVersion: "v4" });
+const state = reactive({ ipAddress: "loading", ipVersion: "IPv4" });
 
 function getAPIUrl() {
   switch (state.ipVersion) {
-    case "v4":
+    case "IPv4":
       return "https://api.ipify.org?format=json";
-    case "v6":
+    case "Universal: IPv4/IPv6":
       return "https://api64.ipify.org?format=json";
     default:
       console.log("error with selected IP version");
@@ -32,7 +32,8 @@ onMounted(() => {
 <template>
   <div class="page-container">
     <h1>Verteego challenge</h1>
-    <p>This is your ip address : {{ state.ipAddress }}</p>
+    <p>This is your ip address :</p>
+    <p>{{ state.ipAddress }} ({{ state.ipVersion }})</p>
   </div>
 </template>
 
