@@ -7,11 +7,14 @@ function setIP(IPvalue) {
   state.ipAddress = IPvalue;
 }
 
-onMounted(() => {
+function fetchIP() {
   fetch("https://api.ipify.org?format=json")
     .then((resp) => resp.json())
     .then((data) => setIP(data.ip));
-  // setIP("test");
+}
+
+onMounted(() => {
+  fetchIP();
 });
 </script>
 
