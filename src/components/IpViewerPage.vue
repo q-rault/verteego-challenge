@@ -3,12 +3,15 @@ import { onMounted, reactive } from "vue";
 
 const state = reactive({ ipAddress: "loading" });
 
-function setIP() {
-  state.ipAddress = "test";
+function setIP(IPvalue) {
+  state.ipAddress = IPvalue;
 }
 
 onMounted(() => {
-  setIP();
+  fetch("https://api.ipify.org?format=json")
+    .then((resp) => resp.json())
+    .then((data) => setIP(data.ip));
+  // setIP("test");
 });
 </script>
 
