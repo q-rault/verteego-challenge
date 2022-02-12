@@ -29,7 +29,11 @@ function setIP(IPvalue) {
 function fetchIP() {
   fetch(getAPIUrl())
     .then((resp) => resp.json())
-    .then((data) => setIP(data.ip));
+    .then((data) => setIP(data.ip))
+    .catch((err) => {
+      console.log(err);
+      return setIP("error getting IP: failed to fetch");
+    });
 }
 
 function handleClick() {
