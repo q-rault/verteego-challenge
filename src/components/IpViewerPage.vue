@@ -78,21 +78,24 @@ p {
 }
 
 button {
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: .1em;
+  text-transform: uppercase;
   margin: 1rem;
-  border-radius: 0.25rem;
+  border-radius: 0.4rem;
   background-color: var(--color-logo); /* Green */
   border: none;
-  color: var(--color-background);
+  color: var(--vt-c-white);
   padding: 15px 32px;
   width: 100%;
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
 }
 button:hover {
-  transform: scale(1.05);
+    background: var(--vt-c-lighter-blue);
 }
 button:active {
   opacity: 0.8;
-  transform: scale(0.95);
-  transition-duration: 0.3s;
+  background: var(--vt-c-darker-blue);
 }
 </style>

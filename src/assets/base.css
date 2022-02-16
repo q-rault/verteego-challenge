@@ -24,6 +24,7 @@
 
   --vt-c-dark-blue: #092984;
   --vt-c-darker-blue: #02154a;
+  --vt-c-lighter-blue: #1139f8;
 }
 
 /* semantic color variables for this project */
@@ -52,7 +53,7 @@
     --color-border: var(--vt-c-divider-dark-2);
     --color-border-hover: var(--vt-c-divider-dark-1);
 
-    --color-heading: var(--vt-c-text-dark-1);
+    --color-heading: var(--vt-c-text-dark-2);
     --color-text: var(--vt-c-text-dark-2);
   }
 }
